@@ -1,9 +1,18 @@
 package uk.co.mruoc;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
+import javax.script.ScriptException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -13,9 +22,10 @@ public class Main {
             "promotionId=#langId=44&storeId=10151&catalogId=10137&categoryId=185749&parent_category_rn=12518&" +
             "top_category=12518&pageSize=20&orderBy=FAVOURITES_FIRST&searchTerm=&beginIndex=0&hideFilters=true";
 
-    public static void main(String[] args) throws IOException {
-        Document document = Jsoup.connect(URL).get();
-        System.out.println(document.toString());
+    public static void main(String[] args) throws IOException, ScriptException {
+        HtmlGetter getter = new HtmlGetter();
+        String html = getter.getHtml(URL);
+        System.out.println(html);
     }
 
 }
