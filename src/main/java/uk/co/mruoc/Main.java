@@ -2,8 +2,6 @@ package uk.co.mruoc;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,8 +9,6 @@ import org.jsoup.select.Elements;
 
 import javax.script.ScriptException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
@@ -25,7 +21,22 @@ public class Main {
     public static void main(String[] args) throws IOException, ScriptException {
         HtmlGetter getter = new HtmlGetter();
         String html = getter.getHtml(URL);
-        System.out.println(html);
+        Document document = Jsoup.parse(html);
+
+        Results results = new Results();
+        Elements products = document.select("div.product");
+        for(Element product : products) {
+            Result result = new Result();
+            Elements links = product.select("h3 > a[href]");
+            for (Element link : links) {
+                result.setTitle(link.text());
+            }
+            results.add(result);
+        }
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(results);
+        System.out.println(json);
     }
 
 }
