@@ -9,7 +9,7 @@ public class HtmlParser {
 
     private static final String TITLE_SELECTOR = ".productTitleDescriptionContainer h1";
     private static final String PRICE_SELECTOR = "p.pricePerUnit";
-    private static final String DESCRIPTION_SELECTOR = "div.productText p";
+    private static final String DESCRIPTION_SELECTOR = "div.productText";
     private static final int BYTES_IN_KILOBYTE = 1024;
 
     private final String html;
@@ -35,9 +35,9 @@ public class HtmlParser {
     }
 
     public String getDescription() {
-        Elements element = document.select(DESCRIPTION_SELECTOR);
-        Element description = element.first();
-        return description.text();
+        Elements elements = document.select(DESCRIPTION_SELECTOR);
+        Element element = elements.first();
+        return element.text();
     }
 
     private double extractPricePerUnit(String pricePerUnit) {
