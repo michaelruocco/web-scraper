@@ -2,8 +2,8 @@ package uk.co.mruoc.format;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import uk.co.mruoc.dto.Result;
-import uk.co.mruoc.dto.Results;
+import uk.co.mruoc.model.Result;
+import uk.co.mruoc.model.Results;
 
 import java.text.DecimalFormat;
 

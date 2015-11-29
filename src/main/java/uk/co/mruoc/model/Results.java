@@ -1,4 +1,4 @@
-package uk.co.mruoc.dto;
+package uk.co.mruoc.model;
 
 import java.util.ArrayList;
 import java.util.List;

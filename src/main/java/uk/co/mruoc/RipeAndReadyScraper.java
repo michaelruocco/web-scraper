@@ -1,7 +1,7 @@
 package uk.co.mruoc;
 
-import uk.co.mruoc.dto.Result;
-import uk.co.mruoc.dto.Results;
+import uk.co.mruoc.model.Result;
+import uk.co.mruoc.model.Results;
 import uk.co.mruoc.format.JsonFormatter;
 import uk.co.mruoc.html.HtmlGetter;
 import uk.co.mruoc.html.HtmlParser;

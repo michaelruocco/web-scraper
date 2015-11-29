@@ -1,9 +1,9 @@
-package uk.co.mruoc.dto;
+package uk.co.mruoc.model;
 
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static uk.co.mruoc.dto.Result.ResultBuilder;
+import static uk.co.mruoc.model.Result.ResultBuilder;
 
 public class ResultTest {
 
