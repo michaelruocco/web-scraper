@@ -11,7 +11,7 @@ public class Results {
         results.add(result);
     }
 
-    public List<Result> getResults() {
+    public List<Result> toList() {
         return results;
     }
 

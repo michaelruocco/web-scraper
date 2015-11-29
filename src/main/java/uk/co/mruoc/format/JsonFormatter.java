@@ -29,7 +29,7 @@ public class JsonFormatter {
 
     private JSONArray toJSonArray() {
         JSONArray array = new JSONArray();
-        for(Result result : results.getResults())
+        for(Result result : results.toList())
             array.put(toJson(result));
         return array;
     }
