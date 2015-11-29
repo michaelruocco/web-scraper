@@ -23,6 +23,7 @@ public class RipeAndReadyScraper {
     public RipeAndReadyScraper(HtmlGetter htmlGetter) {
         this.htmlGetter = htmlGetter;
     }
+
     public String scrape() {
         String listingHtml = htmlGetter.getHtml(LISTING_URL);
         List<String> productUrls = extractor.getUrls(listingHtml);
