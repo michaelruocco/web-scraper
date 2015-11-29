@@ -1,5 +1,7 @@
 package uk.co.mruoc;
 
+import uk.co.mruoc.html.HtmlGetter;
+
 import javax.script.ScriptException;
 import java.io.IOException;
 

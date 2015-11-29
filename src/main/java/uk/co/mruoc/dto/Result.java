@@ -1,4 +1,4 @@
-package uk.co.mruoc;
+package uk.co.mruoc.dto;
 
 public class Result {
 

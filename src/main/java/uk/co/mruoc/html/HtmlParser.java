@@ -1,4 +1,4 @@
-package uk.co.mruoc;
+package uk.co.mruoc.html;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

@@ -1,28 +1,35 @@
-package uk.co.mruoc;
+package uk.co.mruoc.format;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import uk.co.mruoc.dto.Result;
+import uk.co.mruoc.dto.Results;
 
 import java.text.DecimalFormat;
-import java.util.List;
 
-public class JsonConverter {
+public class JsonFormatter {
 
-    public String toJsonString(Results results) {
-        JSONObject json = toJson(results);
+    private Results results;
+
+    public JsonFormatter(Results results) {
+        this.results = results;
+    }
+
+    public String toJsonString() {
+        JSONObject json = toJson();
         return json.toString(4);
     }
 
-    private JSONObject toJson(Results results) {
+    private JSONObject toJson() {
         JSONObject target = new JSONObject();
-        target.put("results", toJSonArray(results.getResults()));
-        target.put("total", formatUnitPrice(results.getTotal()));
+        target.put("results", toJSonArray());
+        target.put("total", formatTotal());
         return target;
     }
 
-    private JSONArray toJSonArray(List<Result> results) {
+    private JSONArray toJSonArray() {
         JSONArray array = new JSONArray();
-        for(Result result: results)
+        for(Result result : results.getResults())
             array.put(toJson(result));
         return array;
     }
@@ -39,6 +46,10 @@ public class JsonConverter {
     private String formatSize(double size) {
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         return decimalFormat.format(size) + "kb";
+    }
+
+    private String formatTotal() {
+        return formatUnitPrice(results.getTotal());
     }
 
     private String formatUnitPrice(double unitPrice) {

@@ -1,9 +1,10 @@
-package uk.co.mruoc;
+package uk.co.mruoc.html;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.service.DriverService;
+import uk.co.mruoc.ScraperException;
 
 import java.io.IOException;
 

@@ -1,8 +1,13 @@
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'application'
 
 group 'com.github.michaelruocco'
 version '1.0.0'
+
+mainClassName = "uk.co.mruoc.Main"
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()

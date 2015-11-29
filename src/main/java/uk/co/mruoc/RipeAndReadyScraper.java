@@ -1,5 +1,12 @@
 package uk.co.mruoc;
 
+import uk.co.mruoc.dto.Result;
+import uk.co.mruoc.dto.Results;
+import uk.co.mruoc.format.JsonFormatter;
+import uk.co.mruoc.html.HtmlGetter;
+import uk.co.mruoc.html.HtmlParser;
+import uk.co.mruoc.html.ProductUrlExtractor;
+
 import java.util.List;
 
 public class RipeAndReadyScraper {
@@ -12,8 +19,6 @@ public class RipeAndReadyScraper {
 
     private final HtmlGetter htmlGetter;
     private final ProductUrlExtractor extractor = new ProductUrlExtractor();
-    private final JsonConverter converter = new JsonConverter();
-
 
     public RipeAndReadyScraper(HtmlGetter htmlGetter) {
         this.htmlGetter = htmlGetter;
@@ -21,14 +26,16 @@ public class RipeAndReadyScraper {
     public String scrape() {
         String listingHtml = htmlGetter.getHtml(LISTING_URL);
         List<String> productUrls = extractor.getUrls(listingHtml);
-        return scrape(productUrls);
+        Results results = scrape(productUrls);
+        JsonFormatter formatter = new JsonFormatter(results);
+        return formatter.toJsonString();
     }
 
-    private String scrape(List<String> productUrls) {
+    private Results scrape(List<String> productUrls) {
         Results results = new Results();
         for (String productUrl : productUrls)
             results.add(getResult(productUrl));
-        return converter.toJsonString(results);
+        return results;
     }
 
     private Result getResult(String productUrl) {

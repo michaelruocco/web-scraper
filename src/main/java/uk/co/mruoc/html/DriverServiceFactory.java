@@ -1,8 +1,9 @@
-package uk.co.mruoc;
+package uk.co.mruoc.html;
 
 import org.apache.commons.lang3.SystemUtils;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.service.DriverService;
+import uk.co.mruoc.ScraperException;
 
 import java.io.File;
 import java.net.URISyntaxException;
