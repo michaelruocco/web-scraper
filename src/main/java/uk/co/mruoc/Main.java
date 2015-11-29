@@ -1,42 +1,15 @@
 package uk.co.mruoc;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import javax.script.ScriptException;
 import java.io.IOException;
 
 public class Main {
 
-    private static final String URL = "http://www.sainsburys.co.uk/webapp/wcs/stores/servlet/CategoryDisplay" +
-            "?listView=true&orderBy=FAVOURITES_FIRST&parent_category_rn=12518&top_category=12518&" +
-            "langId=44&beginIndex=0&pageSize=20&catalogId=10137&searchTerm=&categoryId=185749&listId=&storeId=10151&" +
-            "promotionId=#langId=44&storeId=10151&catalogId=10137&categoryId=185749&parent_category_rn=12518&" +
-            "top_category=12518&pageSize=20&orderBy=FAVOURITES_FIRST&searchTerm=&beginIndex=0&hideFilters=true";
-
     public static void main(String[] args) throws IOException, ScriptException {
-        HtmlGetter getter = new HtmlGetter();
-        String html = getter.getHtml(URL);
-        Document document = Jsoup.parse(html);
-
-        Results results = new Results();
-        Elements products = document.select("div.product");
-        for(Element product : products) {
-            Result result = new Result();
-            Elements links = product.select("h3 > a[href]");
-            for (Element link : links) {
-                result.setTitle(link.text());
-            }
-            results.add(result);
+        try (HtmlGetter htmlGetter = new HtmlGetter()) {
+            RipeAndReadyScraper scraper = new RipeAndReadyScraper(htmlGetter);
+            System.out.println(scraper.scrape());
         }
-
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String json = gson.toJson(results);
-        System.out.println(json);
     }
 
 }

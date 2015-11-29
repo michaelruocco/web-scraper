@@ -15,4 +15,11 @@ public class Results {
         return results;
     }
 
+    public double getTotal() {
+        double total = 0;
+        for(Result result : results)
+            total += result.getUnitPrice();
+        return total;
+    }
+
 }
