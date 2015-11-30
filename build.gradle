@@ -16,6 +16,7 @@ repositories {
 dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.assertj:assertj-core:3.2.0'
+    testCompile 'org.mockito:mockito-all:1.10.19'
 
     compile 'org.jsoup:jsoup:1.8.3'
     compile 'org.seleniumhq.selenium:selenium-java:2.48.2'
