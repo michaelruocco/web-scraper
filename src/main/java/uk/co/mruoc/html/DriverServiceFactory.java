@@ -11,8 +11,8 @@ import java.net.URL;
 
 public class DriverServiceFactory {
 
-    private static final String MAC_DRIVER_PATH = "/drivers/chrome/mac32/chromedriver";
-    private static final String WINDOWS_DRIVER_PATH = "/drivers/chrome/win32/chromedriver.exe";
+    private static final String MAC_DRIVER_PATH = "/drivers/chromedriver";
+    private static final String WINDOWS_DRIVER_PATH = "/drivers/chromedriver.exe";
 
     public DriverService getChromeDriverService() {
         File executable = getDriverExecutable();
