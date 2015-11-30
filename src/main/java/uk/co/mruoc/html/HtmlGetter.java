@@ -10,8 +10,7 @@ import java.io.IOException;
 
 public class HtmlGetter implements AutoCloseable {
 
-    private static final int QUARTER_SECOND = 250;
-
+    private final Waiter waiter = new Waiter();
     private final DriverService driverService;
     private final WebDriver driver;
 
@@ -31,16 +30,8 @@ public class HtmlGetter implements AutoCloseable {
 
     public String getHtml(String url) {
         driver.get(url);
-        wait(QUARTER_SECOND);
+        waiter.waitQuarterSecond();
         return driver.getPageSource();
-    }
-
-    private void wait(int milliseconds) {
-        try {
-            Thread.sleep(milliseconds);
-        } catch (InterruptedException e) {
-            throw new ScraperException(e);
-        }
     }
 
     @Override
