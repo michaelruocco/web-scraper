@@ -23,7 +23,7 @@ public class ProductPagesJsonFormatter {
         return json.toString(INDENTATION);
     }
 
-    private JSONObject toJson() {
+    public JSONObject toJson() {
         JSONObject target = new JSONObject();
         target.put("results", toJSonArray());
         target.put("total", formatTotal());
