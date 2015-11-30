@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ProductPageUrlExtractorTest {
 
-    private static final String TEST_HTML_PATH = "/listing_page.html";
+    private static final String LISTING_PAGE_PATH = "/listing_page.html";
     private static final String URL_1 = "http://www.sainsburys.co.uk/shop/gb/groceries/ripe---ready/sainsburys-apricot-ripe---ready-320g";
     private static final String URL_2 = "http://www.sainsburys.co.uk/shop/gb/groceries/ripe---ready/sainsburys-avocado-xl-pinkerton-loose-300g";
     private static final String URL_3 = "http://www.sainsburys.co.uk/shop/gb/groceries/ripe---ready/sainsburys-avocado--ripe---ready-x2";
@@ -18,7 +18,7 @@ public class ProductPageUrlExtractorTest {
 
     @Test
     public void shouldExtractProductPageUrlsFromListingPageHtml() {
-        String html = loadTestHtml();
+        String html = loadListingPageHtml();
 
         List<String> urls = urlExtractor.getUrls(html);
 
@@ -27,8 +27,8 @@ public class ProductPageUrlExtractorTest {
         assertThat(urls.contains(URL_3)).isTrue();
     }
 
-    private String loadTestHtml() {
-        return htmlLoader.loadHtml(TEST_HTML_PATH);
+    private String loadListingPageHtml() {
+        return htmlLoader.loadHtml(LISTING_PAGE_PATH);
     }
 
 }
