@@ -1,11 +1,9 @@
 package uk.co.mruoc;
 
-import uk.co.mruoc.html.HtmlGetter;
+import uk.co.mruoc.html.*;
 import uk.co.mruoc.model.ProductPage;
 import uk.co.mruoc.model.ProductPages;
 import uk.co.mruoc.format.ProductPagesJsonFormatter;
-import uk.co.mruoc.html.HtmlParser;
-import uk.co.mruoc.html.ProductPageUrlExtractor;
 
 import java.util.List;
 
@@ -21,6 +19,10 @@ public class RipeAndReadyScraper {
 
     private final HtmlGetter htmlGetter;
     private final ProductPageUrlExtractor extractor = new ProductPageUrlExtractor();
+
+    public RipeAndReadyScraper(ChromeWebDriver webDriver) {
+        this(new DefaultHtmlGetter(webDriver));
+    }
 
     public RipeAndReadyScraper(HtmlGetter htmlGetter) {
         this.htmlGetter = htmlGetter;
