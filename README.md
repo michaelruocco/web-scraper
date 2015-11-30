@@ -21,7 +21,7 @@ a Java 8 JDK you should be able to build the application, run all tests and exec
 ./gradlew clean build run
 ```
 
-If you are on a mac system, if you are on windows you can omit the './'
+If you are on windows you can omit the './'
 
 This application has only been tested on mac and windows, to run on unix you will need to add
 the linux selenium driver and reconfigure the Driver Service Factory use the appropriate driver if
