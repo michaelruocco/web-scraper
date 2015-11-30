@@ -25,7 +25,7 @@ public class ProductPagesJsonFormatter {
 
     private JSONObject toJson() {
         JSONObject target = new JSONObject();
-        target.put("productPages", toJSonArray());
+        target.put("results", toJSonArray());
         target.put("total", formatTotal());
         return target;
     }
