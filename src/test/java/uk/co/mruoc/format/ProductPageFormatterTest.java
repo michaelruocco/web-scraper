@@ -12,6 +12,7 @@ public class ProductPageFormatterTest {
     private static final String TITLE = "TITLE";
     private static final double SIZE = 12.333;
     private static final double UNIT_PRICE = 4.444;
+    private static final String DESCRIPTION = "DESCRIPTION";
 
     private ProductPageJsonFormatter productPageJsonFormatter = new ProductPageJsonFormatter();
 
@@ -34,6 +35,13 @@ public class ProductPageFormatterTest {
         ProductPage productPage = new ProductPageBuilder().setUnitPrice(UNIT_PRICE).build();
         JSONObject json = productPageJsonFormatter.toJson(productPage);
         assertThat(json.getString("unit_price")).isEqualTo("4.44");
+    }
+
+    @Test
+    public void shouldReturnDescriptionInJson() {
+        ProductPage productPage = new ProductPageBuilder().setDescription(DESCRIPTION).build();
+        JSONObject json = productPageJsonFormatter.toJson(productPage);
+        assertThat(json.getString("description")).isEqualTo(DESCRIPTION);
     }
 
 }
