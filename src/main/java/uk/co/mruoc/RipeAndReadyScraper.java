@@ -1,13 +1,15 @@
 package uk.co.mruoc;
 
+import uk.co.mruoc.html.HtmlGetter;
 import uk.co.mruoc.model.ProductPage;
 import uk.co.mruoc.model.ProductPages;
 import uk.co.mruoc.format.ProductPagesJsonFormatter;
-import uk.co.mruoc.html.HtmlGetter;
 import uk.co.mruoc.html.HtmlParser;
 import uk.co.mruoc.html.ProductPageUrlExtractor;
 
 import java.util.List;
+
+import static uk.co.mruoc.model.ProductPage.ProductPageBuilder;
 
 public class RipeAndReadyScraper {
 
@@ -43,7 +45,7 @@ public class RipeAndReadyScraper {
     private ProductPage getProductPage(String productUrl) {
         String html = htmlGetter.getHtml(productUrl);
         HtmlParser parser = new HtmlParser(html);
-        return new ProductPage.ProductPageBuilder()
+        return new ProductPageBuilder()
                 .setTitle(parser.getTitle())
                 .setDescription(parser.getDescription())
                 .setUnitPrice(parser.getPricePerUnit())

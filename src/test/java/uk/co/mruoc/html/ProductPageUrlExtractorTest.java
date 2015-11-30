@@ -11,7 +11,6 @@ public class ProductPageUrlExtractorTest {
     private static final String LISTING_PAGE_PATH = "/listing_page.html";
     private static final String URL_1 = "http://www.sainsburys.co.uk/shop/gb/groceries/ripe---ready/sainsburys-apricot-ripe---ready-320g";
     private static final String URL_2 = "http://www.sainsburys.co.uk/shop/gb/groceries/ripe---ready/sainsburys-avocado-xl-pinkerton-loose-300g";
-    private static final String URL_3 = "http://www.sainsburys.co.uk/shop/gb/groceries/ripe---ready/sainsburys-avocado--ripe---ready-x2";
 
     private ProductPageUrlExtractor urlExtractor = new ProductPageUrlExtractor();
     private HtmlLoader htmlLoader = new HtmlLoader();
@@ -22,9 +21,9 @@ public class ProductPageUrlExtractorTest {
 
         List<String> urls = urlExtractor.getUrls(html);
 
+        assertThat(urls.size()).isEqualTo(2);
         assertThat(urls.contains(URL_1)).isTrue();
         assertThat(urls.contains(URL_2)).isTrue();
-        assertThat(urls.contains(URL_3)).isTrue();
     }
 
     private String loadListingPageHtml() {

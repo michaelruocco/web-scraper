@@ -1,20 +1,51 @@
 package uk.co.mruoc.html;
 
 import org.apache.commons.lang3.SystemUtils;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.service.DriverService;
 import uk.co.mruoc.ScraperException;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public class DriverServiceFactory {
+public class ChromeWebDriver implements AutoCloseable {
+
+    private final Waiter waiter = new Waiter();
 
     private static final String MAC_DRIVER_PATH = "/drivers/chromedriver";
     private static final String WINDOWS_DRIVER_PATH = "/drivers/chromedriver.exe";
 
-    public DriverService getChromeDriverService() {
+    private final DriverService driverService;
+    private final WebDriver webDriver;
+
+    public ChromeWebDriver() {
+        try {
+            this.driverService = getChromeDriverService();
+            driverService.start();
+            this.webDriver = new RemoteWebDriver(driverService.getUrl(), DesiredCapabilities.chrome());
+        } catch (IOException e) {
+            throw new ScraperException(e);
+        }
+    }
+
+    public String getHtml(String url) {
+        webDriver.get(url);
+        waiter.waitQuarterSecond();
+        return webDriver.getPageSource();
+    }
+
+    @Override
+    public void close() {
+        webDriver.close();
+        driverService.stop();
+    }
+
+    private DriverService getChromeDriverService() {
         File executable = getDriverExecutable();
         return new ChromeDriverService.Builder()
                 .usingDriverExecutable(executable)

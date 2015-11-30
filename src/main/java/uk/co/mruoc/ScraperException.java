@@ -6,4 +6,8 @@ public class ScraperException extends RuntimeException {
         super(cause);
     }
 
+    public ScraperException(String message) {
+        super(message);
+    }
+
 }
