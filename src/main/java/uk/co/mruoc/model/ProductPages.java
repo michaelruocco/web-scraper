@@ -3,7 +3,7 @@ package uk.co.mruoc.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Results {
+public class ProductPages {
 
     private List<ProductPage> productPages = new ArrayList<>();
 

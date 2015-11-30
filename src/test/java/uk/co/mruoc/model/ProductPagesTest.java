@@ -7,18 +7,18 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static uk.co.mruoc.model.ProductPage.ProductPageBuilder;
 
-public class ResultsTest {
+public class ProductPagesTest {
 
-    private final Results results = new Results();
+    private final ProductPages productPages = new ProductPages();
 
     @Test
     public void shouldReturnResults() {
         ProductPage productPage1 = createResult();
         ProductPage productPage2 = createResult();
 
-        results.add(productPage1);
-        results.add(productPage2);
-        List<ProductPage> productPageList = results.toList();
+        productPages.add(productPage1);
+        productPages.add(productPage2);
+        List<ProductPage> productPageList = productPages.toList();
 
         assertThat(productPageList.size()).isEqualTo(2);
         assertThat(productPageList.contains(productPage1)).isTrue();
@@ -27,10 +27,10 @@ public class ResultsTest {
 
     @Test
     public void shouldCalculateTotal() {
-        results.add(createResultWithPrice(10.50));
-        results.add(createResultWithPrice(5));
+        productPages.add(createResultWithPrice(10.50));
+        productPages.add(createResultWithPrice(5));
 
-        assertThat(results.getTotal()).isEqualTo(15.50);
+        assertThat(productPages.getTotal()).isEqualTo(15.50);
     }
 
     private ProductPage createResult() {

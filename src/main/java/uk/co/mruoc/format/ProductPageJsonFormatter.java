@@ -5,7 +5,7 @@ import uk.co.mruoc.model.ProductPage;
 
 import java.text.DecimalFormat;
 
-public class ResultJsonFormatter {
+public class ProductPageJsonFormatter {
 
     private UnitPriceFormatter unitPriceFormatter = new UnitPriceFormatter();
 

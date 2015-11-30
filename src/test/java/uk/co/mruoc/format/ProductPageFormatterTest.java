@@ -11,12 +11,12 @@ public class ProductPageFormatterTest {
 
     private static final String TITLE = "TITLE";
 
-    private ResultJsonFormatter resultJsonFormatter = new ResultJsonFormatter();
+    private ProductPageJsonFormatter productPageJsonFormatter = new ProductPageJsonFormatter();
 
     @Test
     public void shouldReturnTotalInJson() {
         ProductPage productPage = new ProductPageBuilder().setTitle(TITLE).build();
-        JSONObject json = resultJsonFormatter.toJson(productPage);
+        JSONObject json = productPageJsonFormatter.toJson(productPage);
         assertThat(json.getString("title")).isEqualTo(TITLE);
     }
 

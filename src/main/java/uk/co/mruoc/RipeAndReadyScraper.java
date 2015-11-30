@@ -1,8 +1,8 @@
 package uk.co.mruoc;
 
 import uk.co.mruoc.model.ProductPage;
-import uk.co.mruoc.model.Results;
-import uk.co.mruoc.format.ResultsJsonFormatter;
+import uk.co.mruoc.model.ProductPages;
+import uk.co.mruoc.format.ProductPagesJsonFormatter;
 import uk.co.mruoc.html.HtmlGetter;
 import uk.co.mruoc.html.HtmlParser;
 import uk.co.mruoc.html.ProductUrlExtractor;
@@ -27,19 +27,20 @@ public class RipeAndReadyScraper {
     public String scrape() {
         String listingHtml = htmlGetter.getHtml(LISTING_URL);
         List<String> productUrls = extractor.getUrls(listingHtml);
-        Results results = scrape(productUrls);
-        ResultsJsonFormatter formatter = new ResultsJsonFormatter(results);
-        return formatter.toJsonString();
+        ProductPages productPages = scrape(productUrls);
+        return toJson(productPages);
     }
 
-    private Results scrape(List<String> productUrls) {
-        Results results = new Results();
-        for (String productUrl : productUrls)
-            results.add(getResult(productUrl));
-        return results;
+    private ProductPages scrape(List<String> productUrls) {
+        ProductPages productPages = new ProductPages();
+        for (String productUrl : productUrls) {
+            ProductPage productPage = getProductPage(productUrl);
+            productPages.add(productPage);
+        }
+        return productPages;
     }
 
-    private ProductPage getResult(String productUrl) {
+    private ProductPage getProductPage(String productUrl) {
         String html = htmlGetter.getHtml(productUrl);
         HtmlParser parser = new HtmlParser(html);
         return new ProductPage.ProductPageBuilder()
@@ -48,6 +49,11 @@ public class RipeAndReadyScraper {
                 .setUnitPrice(parser.getPricePerUnit())
                 .setSize(parser.getPageSize())
                 .build();
+    }
+
+    private String toJson(ProductPages productPages) {
+        ProductPagesJsonFormatter formatter = new ProductPagesJsonFormatter(productPages);
+        return formatter.toJsonString();
     }
 
 }
