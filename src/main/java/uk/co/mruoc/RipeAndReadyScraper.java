@@ -2,7 +2,7 @@ package uk.co.mruoc;
 
 import uk.co.mruoc.model.Result;
 import uk.co.mruoc.model.Results;
-import uk.co.mruoc.format.JsonFormatter;
+import uk.co.mruoc.format.ResultsJsonFormatter;
 import uk.co.mruoc.html.HtmlGetter;
 import uk.co.mruoc.html.HtmlParser;
 import uk.co.mruoc.html.ProductUrlExtractor;
@@ -28,7 +28,7 @@ public class RipeAndReadyScraper {
         String listingHtml = htmlGetter.getHtml(LISTING_URL);
         List<String> productUrls = extractor.getUrls(listingHtml);
         Results results = scrape(productUrls);
-        JsonFormatter formatter = new JsonFormatter(results);
+        ResultsJsonFormatter formatter = new ResultsJsonFormatter(results);
         return formatter.toJsonString();
     }
 

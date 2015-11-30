@@ -7,17 +7,22 @@ import uk.co.mruoc.model.Results;
 
 import java.text.DecimalFormat;
 
-public class JsonFormatter {
+public class ResultsJsonFormatter {
 
-    private Results results;
+    private static final int INDENTATION = 4;
 
-    public JsonFormatter(Results results) {
+    private final ResultJsonFormatter resultFormatter = new ResultJsonFormatter();
+    private final UnitPriceFormatter unitPriceFormatter = new UnitPriceFormatter();
+
+    private final Results results;
+
+    public ResultsJsonFormatter(Results results) {
         this.results = results;
     }
 
     public String toJsonString() {
         JSONObject json = toJson();
-        return json.toString(4);
+        return json.toString(INDENTATION);
     }
 
     private JSONObject toJson() {
@@ -34,18 +39,8 @@ public class JsonFormatter {
         return array;
     }
 
-    private JSONObject toJson(Result source) {
-        JSONObject target = new JSONObject();
-        target.put("title", source.getTitle());
-        target.put("size", formatSize(source.getSize()));
-        target.put("unit_price", formatUnitPrice(source.getUnitPrice()));
-        target.put("description", source.getDescription());
-        return target;
-    }
-
-    private String formatSize(double size) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        return decimalFormat.format(size) + "kb";
+    private JSONObject toJson(Result result) {
+        return resultFormatter.toJson(result);
     }
 
     private String formatTotal() {
@@ -53,8 +48,7 @@ public class JsonFormatter {
     }
 
     private String formatUnitPrice(double unitPrice) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.00");
-        return decimalFormat.format(unitPrice);
+        return unitPriceFormatter.format(unitPrice);
     }
 
 }
