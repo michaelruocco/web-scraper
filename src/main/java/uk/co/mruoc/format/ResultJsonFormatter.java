@@ -1,9 +1,7 @@
 package uk.co.mruoc.format;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
-import uk.co.mruoc.model.Result;
-import uk.co.mruoc.model.Results;
+import uk.co.mruoc.model.ProductPage;
 
 import java.text.DecimalFormat;
 
@@ -11,7 +9,7 @@ public class ResultJsonFormatter {
 
     private UnitPriceFormatter unitPriceFormatter = new UnitPriceFormatter();
 
-    public JSONObject toJson(Result source) {
+    public JSONObject toJson(ProductPage source) {
         JSONObject target = new JSONObject();
         target.put("title", source.getTitle());
         target.put("size", formatSize(source.getSize()));
@@ -28,6 +26,5 @@ public class ResultJsonFormatter {
     private String formatUnitPrice(double unitPrice) {
         return unitPriceFormatter.format(unitPrice);
     }
-
 
 }

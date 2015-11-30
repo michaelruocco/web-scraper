@@ -5,20 +5,20 @@ import java.util.List;
 
 public class Results {
 
-    private List<Result> results = new ArrayList<>();
+    private List<ProductPage> productPages = new ArrayList<>();
 
-    public void add(Result result) {
-        results.add(result);
+    public void add(ProductPage productPage) {
+        productPages.add(productPage);
     }
 
-    public List<Result> toList() {
-        return results;
+    public List<ProductPage> toList() {
+        return productPages;
     }
 
     public double getTotal() {
         double total = 0;
-        for(Result result : results)
-            total += result.getUnitPrice();
+        for(ProductPage productPage : productPages)
+            total += productPage.getUnitPrice();
         return total;
     }
 

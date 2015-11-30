@@ -3,16 +3,16 @@ package uk.co.mruoc.model;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static uk.co.mruoc.model.Result.ResultBuilder;
+import static uk.co.mruoc.model.ProductPage.ProductPageBuilder;
 
-public class ResultTest {
+public class ProductPageTest {
 
     private static final String TITLE = "TITLE";
     private static final String DESCRIPTION = "DESCRIPTION";
     private static final double UNIT_PRICE = 9.99;
     private static final double SIZE = 33;
 
-    private final Result result = new ResultBuilder()
+    private final ProductPage productPage = new ProductPageBuilder()
             .setTitle(TITLE)
             .setDescription(DESCRIPTION)
             .setUnitPrice(UNIT_PRICE)
@@ -21,10 +21,10 @@ public class ResultTest {
 
     @Test
     public void shouldReturnValues() {
-        assertThat(result.getTitle()).isEqualTo(TITLE);
-        assertThat(result.getDescription()).isEqualTo(DESCRIPTION);
-        assertThat(result.getUnitPrice()).isEqualTo(UNIT_PRICE);
-        assertThat(result.getSize()).isEqualTo(SIZE);
+        assertThat(productPage.getTitle()).isEqualTo(TITLE);
+        assertThat(productPage.getDescription()).isEqualTo(DESCRIPTION);
+        assertThat(productPage.getUnitPrice()).isEqualTo(UNIT_PRICE);
+        assertThat(productPage.getSize()).isEqualTo(SIZE);
     }
 
 }

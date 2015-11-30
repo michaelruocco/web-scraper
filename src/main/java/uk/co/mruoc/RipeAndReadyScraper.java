@@ -1,6 +1,6 @@
 package uk.co.mruoc;
 
-import uk.co.mruoc.model.Result;
+import uk.co.mruoc.model.ProductPage;
 import uk.co.mruoc.model.Results;
 import uk.co.mruoc.format.ResultsJsonFormatter;
 import uk.co.mruoc.html.HtmlGetter;
@@ -39,10 +39,10 @@ public class RipeAndReadyScraper {
         return results;
     }
 
-    private Result getResult(String productUrl) {
+    private ProductPage getResult(String productUrl) {
         String html = htmlGetter.getHtml(productUrl);
         HtmlParser parser = new HtmlParser(html);
-        return new Result.ResultBuilder()
+        return new ProductPage.ProductPageBuilder()
                 .setTitle(parser.getTitle())
                 .setDescription(parser.getDescription())
                 .setUnitPrice(parser.getPricePerUnit())

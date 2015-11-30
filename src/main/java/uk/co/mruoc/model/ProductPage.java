@@ -1,13 +1,13 @@
 package uk.co.mruoc.model;
 
-public class Result {
+public class ProductPage {
 
     private String title;
     private String description;
     private double unitPrice;
     private double size;
 
-    private Result(ResultBuilder builder) {
+    private ProductPage(ProductPageBuilder builder) {
         this.title = builder.title;
         this.description = builder.description;
         this.unitPrice = builder.unitPrice;
@@ -30,35 +30,35 @@ public class Result {
         return size;
     }
 
-    public static class ResultBuilder {
+    public static class ProductPageBuilder {
 
         private String title;
         private String description;
         private double unitPrice;
         private double size;
 
-        public ResultBuilder setTitle(String title) {
+        public ProductPageBuilder setTitle(String title) {
             this.title = title;
             return this;
         }
 
-        public ResultBuilder setDescription(String description) {
+        public ProductPageBuilder setDescription(String description) {
             this.description = description;
             return this;
         }
 
-        public ResultBuilder setUnitPrice(double unitPrice) {
+        public ProductPageBuilder setUnitPrice(double unitPrice) {
             this.unitPrice = unitPrice;
             return this;
         }
 
-        public ResultBuilder setSize(double size) {
+        public ProductPageBuilder setSize(double size) {
             this.size = size;
             return this;
         }
 
-        public Result build() {
-            return new Result(this);
+        public ProductPage build() {
+            return new ProductPage(this);
         }
 
     }

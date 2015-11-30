@@ -2,10 +2,8 @@ package uk.co.mruoc.format;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import uk.co.mruoc.model.Result;
+import uk.co.mruoc.model.ProductPage;
 import uk.co.mruoc.model.Results;
-
-import java.text.DecimalFormat;
 
 public class ResultsJsonFormatter {
 
@@ -34,13 +32,13 @@ public class ResultsJsonFormatter {
 
     private JSONArray toJSonArray() {
         JSONArray array = new JSONArray();
-        for(Result result : results.toList())
-            array.put(toJson(result));
+        for(ProductPage productPage : results.toList())
+            array.put(toJson(productPage));
         return array;
     }
 
-    private JSONObject toJson(Result result) {
-        return resultFormatter.toJson(result);
+    private JSONObject toJson(ProductPage productPage) {
+        return resultFormatter.toJson(productPage);
     }
 
     private String formatTotal() {
