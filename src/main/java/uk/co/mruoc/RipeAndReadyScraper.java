@@ -5,7 +5,7 @@ import uk.co.mruoc.model.ProductPages;
 import uk.co.mruoc.format.ProductPagesJsonFormatter;
 import uk.co.mruoc.html.HtmlGetter;
 import uk.co.mruoc.html.HtmlParser;
-import uk.co.mruoc.html.ProductUrlExtractor;
+import uk.co.mruoc.html.ProductPageUrlExtractor;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class RipeAndReadyScraper {
             "top_category=12518&pageSize=20&orderBy=FAVOURITES_FIRST&searchTerm=&beginIndex=0&hideFilters=true";
 
     private final HtmlGetter htmlGetter;
-    private final ProductUrlExtractor extractor = new ProductUrlExtractor();
+    private final ProductPageUrlExtractor extractor = new ProductPageUrlExtractor();
 
     public RipeAndReadyScraper(HtmlGetter htmlGetter) {
         this.htmlGetter = htmlGetter;

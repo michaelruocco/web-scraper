@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ProductUrlExtractor {
+public class ProductPageUrlExtractor {
 
     private static final String PRODUCT_SELECTOR = "div.product";
     private static final String LINK_SELECTOR = "h3 > a[href]";
