@@ -5,6 +5,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.nio.charset.Charset;
+
 public class HtmlParser {
 
     private static final String TITLE_SELECTOR = ".productTitleDescriptionContainer h1";
@@ -31,7 +33,8 @@ public class HtmlParser {
     }
 
     public double getPageSize() {
-        return html.length() / BYTES_IN_KILOBYTE;
+        byte[] bytes = html.getBytes(Charset.defaultCharset());
+        return bytes.length / BYTES_IN_KILOBYTE;
     }
 
     public String getDescription() {
