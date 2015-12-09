@@ -1,10 +1,10 @@
 package uk.co.mruoc.html;
 
-public class DefaultHtmlGetter implements HtmlGetter {
+public class WebDriverHtmlGetter implements HtmlGetter {
 
     private final ChromeWebDriver webDriver;
 
-    public DefaultHtmlGetter(ChromeWebDriver webDriver) {
+    public WebDriverHtmlGetter(ChromeWebDriver webDriver) {
         this.webDriver = webDriver;
     }
 

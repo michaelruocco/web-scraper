@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class HtmlParserTest {
+public class ProductPageParserTest {
 
     private static final String PRODUCT_PAGE_PATH = "/apricot_page.html";
 
@@ -19,7 +19,7 @@ public class HtmlParserTest {
     public void shouldParseTitleFromProductPage() {
         String html = loadProductPageHtml();
 
-        HtmlParser parser = new HtmlParser(html);
+        ProductPageParser parser = new ProductPageParser(html);
 
         assertThat(parser.getTitle()).isEqualTo(TITLE);
     }
@@ -28,7 +28,7 @@ public class HtmlParserTest {
     public void shouldParseDescriptionFromProductPage() {
         String html = loadProductPageHtml();
 
-        HtmlParser parser = new HtmlParser(html);
+        ProductPageParser parser = new ProductPageParser(html);
 
         assertThat(parser.getDescription()).isEqualTo(DESCRIPTION);
     }
@@ -37,7 +37,7 @@ public class HtmlParserTest {
     public void shouldParseUnitPriceFromProductPage() {
         String html = loadProductPageHtml();
 
-        HtmlParser parser = new HtmlParser(html);
+        ProductPageParser parser = new ProductPageParser(html);
 
         assertThat(parser.getPricePerUnit()).isEqualTo(UNIT_PRICE);
     }
@@ -46,7 +46,7 @@ public class HtmlParserTest {
     public void shouldParsePageSizeFromProductPage() {
         String html = loadProductPageHtml();
 
-        HtmlParser parser = new HtmlParser(html);
+        ProductPageParser parser = new ProductPageParser(html);
 
         assertThat(parser.getPageSize()).isEqualTo(PAGE_SIZE);
     }

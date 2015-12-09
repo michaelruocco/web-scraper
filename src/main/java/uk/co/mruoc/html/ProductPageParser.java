@@ -7,7 +7,7 @@ import org.jsoup.select.Elements;
 
 import java.nio.charset.Charset;
 
-public class HtmlParser {
+public class ProductPageParser {
 
     private static final String TITLE_SELECTOR = ".productTitleDescriptionContainer h1";
     private static final String PRICE_SELECTOR = "p.pricePerUnit";
@@ -17,7 +17,7 @@ public class HtmlParser {
     private final String html;
     private final Document document;
 
-    public HtmlParser(String html) {
+    public ProductPageParser(String html) {
         this.html = html;
         this.document = Jsoup.parse(html);
     }

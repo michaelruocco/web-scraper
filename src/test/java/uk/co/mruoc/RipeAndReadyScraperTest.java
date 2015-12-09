@@ -10,8 +10,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class RipeAndReadyScraperTest {
 
-    private HtmlGetter htmlGetter = new FakeHtmlGetter();
-    private RipeAndReadyScraper scraper = new RipeAndReadyScraper(htmlGetter);
+    private static final String LISTING_URL = "http://www.sainsburys.co.uk/productSearch.html";
+
+    private HtmlGetter htmlGetter = new FakeHtmlGetter(LISTING_URL);
+    private RipeAndReadyScraper scraper = new RipeAndReadyScraper(htmlGetter, LISTING_URL);
 
     @Test
     public void shouldScrapeDataFromFakeHtmlGetter() {

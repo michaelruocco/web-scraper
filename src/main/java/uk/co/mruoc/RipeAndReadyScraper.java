@@ -9,27 +9,21 @@ import java.util.List;
 
 import static uk.co.mruoc.model.ProductPage.ProductPageBuilder;
 
-public class RipeAndReadyScraper {
-
-    private static final String LISTING_URL = "http://www.sainsburys.co.uk/webapp/wcs/stores/servlet/CategoryDisplay" +
-            "?listView=true&orderBy=FAVOURITES_FIRST&parent_category_rn=12518&top_category=12518&" +
-            "langId=44&beginIndex=0&pageSize=20&catalogId=10137&searchTerm=&categoryId=185749&listId=&storeId=10151&" +
-            "promotionId=#langId=44&storeId=10151&catalogId=10137&categoryId=185749&parent_category_rn=12518&" +
-            "top_category=12518&pageSize=20&orderBy=FAVOURITES_FIRST&searchTerm=&beginIndex=0&hideFilters=true";
+public class RipeAndReadyScraper implements Scraper {
 
     private final HtmlGetter htmlGetter;
+    private final String url;
     private final ProductPageUrlExtractor extractor = new ProductPageUrlExtractor();
 
-    public RipeAndReadyScraper(ChromeWebDriver webDriver) {
-        this(new DefaultHtmlGetter(webDriver));
-    }
-
-    public RipeAndReadyScraper(HtmlGetter htmlGetter) {
+    public RipeAndReadyScraper(HtmlGetter htmlGetter, String url) {
         this.htmlGetter = htmlGetter;
+        this.url = url;
     }
 
+    @Override
     public String scrape() {
-        String listingHtml = htmlGetter.getHtml(LISTING_URL);
+        System.out.println("scraping java data from " + url);
+        String listingHtml = htmlGetter.getHtml(url);
         List<String> productUrls = extractor.getUrls(listingHtml);
         ProductPages productPages = scrape(productUrls);
         return toJson(productPages);
@@ -46,7 +40,7 @@ public class RipeAndReadyScraper {
 
     private ProductPage getProductPage(String productUrl) {
         String html = htmlGetter.getHtml(productUrl);
-        HtmlParser parser = new HtmlParser(html);
+        ProductPageParser parser = new ProductPageParser(html);
         return new ProductPageBuilder()
                 .setTitle(parser.getTitle())
                 .setDescription(parser.getDescription())
