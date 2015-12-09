@@ -1,7 +1,9 @@
 # Web Scraper
 
 This project is an attempt to solve a programming problem that requires data to be
-scrape from the following web page:
+scrape from the following web pages:
+
+http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html
 
 http://www.sainsburys.co.uk/webapp/wcs/stores/servlet/CategoryDisplay?listView=true&orderBy=FAVOURITES_FIRST&parent_category_rn=12518&top_category=12518&langId=44&beginIndex=0&pageSize=20&catalogId=10137&searchTerm=&categoryId=185749&listId=&storeId=10151&promotionId=#langId=44&storeId=10151&catalogId=10137&categoryId=185749&parent_category_rn=12518&top_category=12518&pageSize=20&orderBy=FAVOURITES_FIRST&searchTerm=&beginIndex=0&hideFilters=true
 
@@ -15,14 +17,23 @@ to items in the table. Additionally, there should be a total field which is a su
 ## Running the application and tests
 
 The project is built with gradle and assumes the use of Java 8. As long as your JAVA_HOME variable is pointing to
-a Java 8 JDK you should be able to build the application, run all tests and execute the application by running:
+a Java 8 JDK you should be able to build the application. You can execute the code by running the
+following commands:
 
 ```
-./gradlew clean build run
+gradlew clean build                     //runs all unit tests
+gradlew clean build integrationTest     //runs all unit tests followed by integration tests
+gradlew clean build run                 //runs the application
 ```
 
-If you are on windows you can omit the './'
+The integration tests are required because it was not possible to create reliably running unit tests
+based around connecting to a web page that exists on the web and is not under my control. It should also
+be noted that the integration tests will fail if any of the pages referenced are modified. The integration tests
+process both a dynamically loaded and statically loaded listing page found at the following urls respectively:
 
-This application has only been tested on mac and windows, to run on unix you will need to add
-the linux selenium driver and reconfigure the Driver Service Factory use the appropriate driver if
-running on linux.
+static: http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html
+
+dynamic: http://www.sainsburys.co.uk/webapp/wcs/stores/servlet/CategoryDisplay?listView=true&orderBy=FAVOURITES_FIRST&parent_category_rn=12518&top_category=12518&langId=44&beginIndex=0&pageSize=20&catalogId=10137&searchTerm=&categoryId=185749&listId=&storeId=10151&promotionId=#langId=44&storeId=10151&catalogId=10137&categoryId=185749&parent_category_rn=12518&top_category=12518&pageSize=20&orderBy=FAVOURITES_FIRST&searchTerm=&beginIndex=0&hideFilters=true
+
+The application has only been tested on mac and windows, although the linux drivers for both 32 and 64 bit are present
+they have not been fully tested.

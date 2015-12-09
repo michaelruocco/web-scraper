@@ -16,7 +16,7 @@ public class RipeAndReadyScraperTest {
     private RipeAndReadyScraper scraper = new RipeAndReadyScraper(htmlGetter, LISTING_URL);
 
     @Test
-    public void shouldScrapeTotalFromFakeHtmlGetter() {
+    public void shouldScrapeTotal() {
         String result = scraper.scrape();
 
         JSONObject json = new JSONObject(result);
@@ -24,7 +24,7 @@ public class RipeAndReadyScraperTest {
     }
 
     @Test
-    public void shouldScrapeResultsFromFakeHtmlGetter() {
+    public void shouldScrapeResults() {
         String result = scraper.scrape();
 
         JSONObject json = new JSONObject(result);
@@ -33,7 +33,7 @@ public class RipeAndReadyScraperTest {
     }
 
     @Test
-    public void shouldScrapeFirstResultFromFakeHtmlGetter() {
+    public void shouldScrapeFirstResult() {
         String result = scraper.scrape();
 
         JSONObject json = new JSONObject(result);
@@ -47,7 +47,7 @@ public class RipeAndReadyScraperTest {
     }
 
     @Test
-    public void shouldScrapeSecondResultFromFakeHtmlGetter() {
+    public void shouldScrapeSecondResult() {
         String result = scraper.scrape();
 
         JSONObject json = new JSONObject(result);

@@ -17,7 +17,9 @@ public class ChromeWebDriver implements AutoCloseable {
 
     private final Waiter waiter = new Waiter();
 
-    private static final String MAC_DRIVER_PATH = "/drivers/chromedriver";
+    private static final String OS_NAME = System.getProperty("os.name");
+    private static final String MAC_DRIVER_PATH = "/drivers/chromedriver_mac32";
+    private static final String LINUX_DRIVER_PATH = "/drivers/chromedriver_linux32";
     private static final String WINDOWS_DRIVER_PATH = "/drivers/chromedriver.exe";
 
     private final DriverService driverService;
@@ -65,7 +67,14 @@ public class ChromeWebDriver implements AutoCloseable {
     private String getDriverPath() {
         if (SystemUtils.IS_OS_MAC)
             return MAC_DRIVER_PATH;
-        return WINDOWS_DRIVER_PATH;
+
+        if (SystemUtils.IS_OS_LINUX)
+            return LINUX_DRIVER_PATH;
+
+        if (SystemUtils.IS_OS_WINDOWS)
+            return WINDOWS_DRIVER_PATH;
+
+        throw new ScraperException("unsupported os " + OS_NAME);
     }
 
 }
