@@ -22,7 +22,6 @@ public class RipeAndReadyScraper implements Scraper {
 
     @Override
     public String scrape() {
-        System.out.println("scraping java data from " + url);
         String listingHtml = htmlGetter.getHtml(url);
         List<String> productUrls = extractor.getUrls(listingHtml);
         ProductPages productPages = scrape(productUrls);
