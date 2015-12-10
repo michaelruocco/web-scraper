@@ -10,7 +10,7 @@ import static uk.co.mruoc.model.ProductPage.ProductPageBuilder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ProductPagesFormatterTest {
+public class ProductPagesJsonFormatterTest {
 
     private static final String TITLE = "TITLE";
     private static final String DESCRIPTION = "DESCRIPTION";

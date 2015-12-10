@@ -11,7 +11,7 @@ public class ProductPageParserTest {
     private static final String TITLE = "Sainsbury's Apricot Ripe & Ready x5";
     private static final String DESCRIPTION = "Apricots";
     private static final double UNIT_PRICE = 3.5;
-    private static final double PAGE_SIZE = 133.9482421875;
+    private static final double PAGE_SIZE = 137163;
 
     private HtmlLoader htmlLoader = new HtmlLoader();
 

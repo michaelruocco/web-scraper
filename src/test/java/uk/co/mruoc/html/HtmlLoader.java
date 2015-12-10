@@ -11,13 +11,13 @@ public class HtmlLoader {
 
     public String loadHtml(String path) {
         URL url = ProductPageUrlExtractorTest.class.getResource(path);
-        StringBuilder html = new StringBuilder();
         try (Stream<String> stream = Files.lines(Paths.get(url.toURI()))) {
+            StringBuilder html = new StringBuilder();
             stream.forEach(html::append);
+            return html.toString();
         } catch (IOException | URISyntaxException e) {
             throw new RuntimeException(e);
         }
-        return html.toString();
     }
 
 }

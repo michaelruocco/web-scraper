@@ -7,10 +7,10 @@ import uk.co.mruoc.model.ProductPage;
 import static org.assertj.core.api.Assertions.assertThat;
 import static uk.co.mruoc.model.ProductPage.ProductPageBuilder;
 
-public class ProductPageFormatterTest {
+public class ProductPageJsonFormatterTest {
 
     private static final String TITLE = "TITLE";
-    private static final double SIZE = 12.333;
+    private static final double SIZE_IN_BYTES = 2560;
     private static final double UNIT_PRICE = 4.444;
     private static final String DESCRIPTION = "DESCRIPTION";
 
@@ -25,9 +25,9 @@ public class ProductPageFormatterTest {
 
     @Test
     public void shouldReturnSizeInJson() {
-        ProductPage productPage = new ProductPageBuilder().setSize(SIZE).build();
+        ProductPage productPage = new ProductPageBuilder().setSize(SIZE_IN_BYTES).build();
         JSONObject json = productPageJsonFormatter.toJson(productPage);
-        assertThat(json.getString("size")).isEqualTo("12.33kb");
+        assertThat(json.getString("size")).isEqualTo("2.5kb");
     }
 
     @Test
