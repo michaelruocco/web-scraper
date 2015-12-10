@@ -37,7 +37,7 @@ public class ChromeWebDriver implements AutoCloseable {
 
     public String getHtml(String url) {
         webDriver.get(url);
-        waiter.waitQuarterSecond();
+        waiter.waitHalfSecond();
         return webDriver.getPageSource();
     }
 

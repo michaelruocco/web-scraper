@@ -7,9 +7,9 @@ import java.text.DecimalFormat;
 
 public class ProductPageJsonFormatter {
 
-    private static final double BYTES_IN_KILOBYTE = 1024;
-
     private UnitPriceFormatter unitPriceFormatter = new UnitPriceFormatter();
+    private SizeConverter sizeConverter = new SizeConverter();
+    private SizeFormatter sizeFormatter = new SizeFormatter();
 
     public JSONObject toJson(ProductPage source) {
         JSONObject target = new JSONObject();
@@ -21,9 +21,8 @@ public class ProductPageJsonFormatter {
     }
 
     private String formatSize(ProductPage productPage) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        double size = productPage.getSize() / BYTES_IN_KILOBYTE;
-        return decimalFormat.format(size) + "kb";
+        double size = sizeConverter.bytesToKiloBytes(productPage.getSize());
+        return sizeFormatter.format(size);
     }
 
     private String formatUnitPrice(ProductPage productPage) {
