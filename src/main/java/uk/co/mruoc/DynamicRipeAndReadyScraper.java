@@ -1,10 +1,7 @@
 package uk.co.mruoc;
 
-import uk.co.mruoc.RipeAndReadyScraper;
-import uk.co.mruoc.Scraper;
-import uk.co.mruoc.html.ChromeWebDriver;
+import uk.co.mruoc.html.FirefoxWebDriver;
 import uk.co.mruoc.html.HtmlGetter;
-import uk.co.mruoc.html.JSoupHtmlGetter;
 import uk.co.mruoc.html.WebDriverHtmlGetter;
 
 public class DynamicRipeAndReadyScraper implements Scraper {
@@ -17,7 +14,7 @@ public class DynamicRipeAndReadyScraper implements Scraper {
 
     @Override
     public String scrape() {
-        try (ChromeWebDriver webDriver = new ChromeWebDriver()) {
+        try (FirefoxWebDriver webDriver = new FirefoxWebDriver()) {
             HtmlGetter htmlGetter = new WebDriverHtmlGetter(webDriver);
             RipeAndReadyScraper scraper = new RipeAndReadyScraper(htmlGetter, LISTING_URL);
             return scraper.scrape();

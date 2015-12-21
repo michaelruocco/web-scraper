@@ -11,7 +11,7 @@ public class WebDriverHtmlGetterTest {
     private static final String URL = "http://localhost:8080/testUrl";
     private static final String HTML = "<html><head></head><body>some body</body></html>";
 
-    private final ChromeWebDriver webDriver = mock(ChromeWebDriver.class);
+    private final FirefoxWebDriver webDriver = mock(FirefoxWebDriver.class);
     private final HtmlGetter htmlGetter = new WebDriverHtmlGetter(webDriver);
 
     @Test

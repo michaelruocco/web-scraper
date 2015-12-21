@@ -4,10 +4,10 @@ import uk.co.mruoc.ScraperException;
 
 public class Waiter {
 
-    private static final int HALF_SECOND = 500;
+    private static final int TWO_SECONDS = 2000;
 
-    public void waitHalfSecond() {
-        wait(HALF_SECOND);
+    public void waitTwoSeconds() {
+        wait(TWO_SECONDS);
     }
 
     private void wait(int milliseconds) {

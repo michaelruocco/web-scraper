@@ -2,9 +2,9 @@ package uk.co.mruoc.html;
 
 public class WebDriverHtmlGetter implements HtmlGetter {
 
-    private final ChromeWebDriver webDriver;
+    private final FirefoxWebDriver webDriver;
 
-    public WebDriverHtmlGetter(ChromeWebDriver webDriver) {
+    public WebDriverHtmlGetter(FirefoxWebDriver webDriver) {
         this.webDriver = webDriver;
     }
 
