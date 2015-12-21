@@ -1,6 +1,20 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "com.github.samueltbrown:gradle-cucumber-plugin:0.8"
+        classpath "info.cukes:cucumber-core:1.2.2"
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
+apply plugin: 'com.github.samueltbrown.cucumber'
+apply plugin: 'jacoco'
+apply plugin: 'com.github.kt3k.coveralls'
 
 group 'com.github.michaelruocco'
 version '1.0.0'
@@ -13,34 +27,30 @@ repositories {
     mavenCentral()
 }
 
-sourceSets {
-    integrationTest {
-        java {
-            compileClasspath += main.output
-            compileClasspath += test.output
-
-            runtimeClasspath += main.output
-            runtimeClasspath += test.output
-        }
-    }
-}
-
-task integrationTest(type: Test) {
-    testClassesDir = sourceSets.integrationTest.output.classesDir
-    classpath = sourceSets.integrationTest.runtimeClasspath
-}
-
-configurations {
-    integrationTestCompile.extendsFrom testCompile
-    integrationTestRuntime.extendsFrom testRuntime
+cucumber {
+    formats = ['pretty']
+    tags = ['~@wip']
 }
 
 dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.assertj:assertj-core:3.2.0'
     testCompile 'org.mockito:mockito-all:1.10.19'
+    testCompile 'info.cukes:cucumber-java:1.2.4'
+    testCompile 'info.cukes:cucumber-junit:1.2.4'
 
     compile 'org.jsoup:jsoup:1.8.3'
     compile 'org.seleniumhq.selenium:selenium-java:2.48.2'
     compile 'org.json:json:20151123'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << '-Xlint'
 }

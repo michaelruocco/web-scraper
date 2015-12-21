@@ -22,7 +22,7 @@ following commands:
 
 ```
 gradlew clean build                     //runs all unit tests
-gradlew clean build integrationTest     //runs all unit tests followed by integration tests
+gradlew clean build cucumber            //runs all unit tests followed by integration tests
 gradlew clean build run                 //runs the application
 ```
 
