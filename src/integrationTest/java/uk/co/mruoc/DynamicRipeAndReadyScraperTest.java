@@ -33,7 +33,6 @@ public class DynamicRipeAndReadyScraperTest {
         assertThat(firstPage.getString("unit_price")).isEqualTo("3.50");
 
         JSONObject lastPage = results.getJSONObject(15);
-        System.out.println(lastPage.getString("size"));
         assertThat(matchesSizeFormat(lastPage.getString("size"))).isTrue();
         assertThat(lastPage.getString("description")).isEqualTo("by Sainsbury's Ripe and Ready White Flesh Nectarines");
         assertThat(lastPage.getString("title")).isEqualTo("Sainsbury's White Flesh Nectarines, Ripe & Ready x4");
