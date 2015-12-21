@@ -5,7 +5,7 @@ import uk.co.mruoc.ScraperException;
 
 import java.io.IOException;
 
-public class JSoupHtmlGetter implements HtmlGetter {
+public class DefaultHtmlGetter implements HtmlGetter {
 
     @Override
     public String getHtml(String url) {

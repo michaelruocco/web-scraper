@@ -3,9 +3,9 @@ package uk.co.mruoc;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import uk.co.mruoc.html.DefaultHtmlGetter;
 
 import java.util.List;
 
@@ -18,14 +18,9 @@ public class StepDefs {
     private JSONObject json;
     private JSONArray results;
 
-    @Given("^a dynamic page is loaded$")
-    public void a_dynamic_page_is_loaded() throws Throwable {
-        scraper = new DynamicRipeAndReadyScraper();
-    }
-
-    @Given("^a static page is loaded$")
-    public void a_static_page_is_loaded() throws Throwable {
-        scraper = new StaticRipeAndReadyScraper();
+    @Given("^a page is loaded$")
+    public void a_page_is_loaded() throws Throwable {
+        scraper = new Scraper(new DefaultHtmlGetter());
     }
 
     @When("^the page is parsed$")
@@ -53,8 +48,7 @@ public class StepDefs {
             assertThat(page.getString("title")).isEqualTo(pageData.getTitle());
             assertThat(page.getString("description")).isEqualTo(pageData.getDescription());
             assertThat(page.getString("unit_price")).isEqualTo(pageData.getUnitPrice());
-            if (!StringUtils.isEmpty(pageData.getSize()))
-                assertThat(page.getString("size")).isEqualTo(pageData.getSize());
+            assertThat(page.getString("size")).isEqualTo(pageData.getSize());
         }
     }
 

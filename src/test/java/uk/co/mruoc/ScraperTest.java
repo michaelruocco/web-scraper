@@ -8,12 +8,12 @@ import uk.co.mruoc.html.HtmlGetter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RipeAndReadyScraperTest {
+public class ScraperTest {
 
-    private static final String LISTING_URL = "http://www.sainsburys.co.uk/productSearch.html";
+    private static final String LISTING_URL = "http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html";
 
     private HtmlGetter htmlGetter = new FakeHtmlGetter(LISTING_URL);
-    private RipeAndReadyScraper scraper = new RipeAndReadyScraper(htmlGetter, LISTING_URL);
+    private Scraper scraper = new Scraper(htmlGetter);
 
     @Test
     public void shouldScrapeTotal() {

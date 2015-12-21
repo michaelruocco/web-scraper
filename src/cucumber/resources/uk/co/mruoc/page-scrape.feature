@@ -1,7 +1,7 @@
-Feature: Static Page Scrape
+Feature: Page Scrape
 
-  Scenario: Scrape data from dynamically loaded listing page
-    Given a static page is loaded
+  Scenario: Scrape data from listing page
+    Given a page is loaded
     When the page is parsed
     Then there are 7 result pages returned with a total value of 15.10
     And the following data is parsed from the pages
