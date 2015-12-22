@@ -11,4 +11,8 @@ public class ScraperException extends RuntimeException {
         super(message);
     }
 
+    public ScraperException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
 }

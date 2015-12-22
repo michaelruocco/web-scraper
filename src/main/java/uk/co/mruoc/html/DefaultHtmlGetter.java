@@ -11,8 +11,8 @@ public class DefaultHtmlGetter implements HtmlGetter {
     public String getHtml(String url) {
         try {
             return Jsoup.connect(url).get().html();
-        } catch (IOException e) {
-            throw new ScraperException(e);
+        } catch (IOException | IllegalArgumentException e) {
+            throw new ScraperException("could not load html from url: " + url, e);
         }
     }
 
