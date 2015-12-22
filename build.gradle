@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         jcenter()
+
     }
     dependencies {
         classpath "com.github.samueltbrown:gradle-cucumber-plugin:0.8"
@@ -25,6 +26,7 @@ targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven { url 'http://repository.pentaho.org/artifactory/repo/' }
 }
 
 cucumber {
@@ -41,7 +43,7 @@ dependencies {
 
     compile 'org.jsoup:jsoup:1.8.3'
     compile 'org.seleniumhq.selenium:selenium-java:2.48.2'
-    compile 'org.json:json:20151123'
+    compile 'org.json:json:5.0.5'
 }
 
 jacocoTestReport {

@@ -1,6 +1,7 @@
 package uk.co.mruoc;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 import uk.co.mruoc.html.FakeHtmlGetter;
@@ -16,7 +17,7 @@ public class ScraperTest {
     private Scraper scraper = new Scraper(htmlGetter);
 
     @Test
-    public void shouldScrapeTotal() {
+    public void shouldScrapeTotal() throws JSONException {
         String result = scraper.scrape();
 
         JSONObject json = new JSONObject(result);
@@ -24,7 +25,7 @@ public class ScraperTest {
     }
 
     @Test
-    public void shouldScrapeResults() {
+    public void shouldScrapeResults() throws JSONException {
         String result = scraper.scrape();
 
         JSONObject json = new JSONObject(result);
@@ -33,7 +34,7 @@ public class ScraperTest {
     }
 
     @Test
-    public void shouldScrapeFirstResult() {
+    public void shouldScrapeFirstResult() throws JSONException {
         String result = scraper.scrape();
 
         JSONObject json = new JSONObject(result);
@@ -47,7 +48,7 @@ public class ScraperTest {
     }
 
     @Test
-    public void shouldScrapeSecondResult() {
+    public void shouldScrapeSecondResult() throws JSONException {
         String result = scraper.scrape();
 
         JSONObject json = new JSONObject(result);

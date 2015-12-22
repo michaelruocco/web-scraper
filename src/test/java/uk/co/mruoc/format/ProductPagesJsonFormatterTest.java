@@ -1,6 +1,7 @@
 package uk.co.mruoc.format;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 import uk.co.mruoc.model.ProductPage;
@@ -22,20 +23,20 @@ public class ProductPagesJsonFormatterTest {
     private ProductPagesJsonFormatter formatter = new ProductPagesJsonFormatter(productPages);
 
     @Test
-    public void shouldReturnEmptyResultsArrayIfNoProductPagesAdded() {
+    public void shouldReturnEmptyResultsArrayIfNoProductPagesAdded() throws JSONException {
         JSONObject results = formatter.toJson();
         JSONArray resultsArray = results.getJSONArray("results");
         assertThat(resultsArray.length()).isEqualTo(0);
     }
 
     @Test
-    public void shouldReturnZeroTotalIfNoProductPagesAdded() {
+    public void shouldReturnZeroTotalIfNoProductPagesAdded() throws JSONException {
         JSONObject results = formatter.toJson();
         assertThat(results.getString("total")).isEqualTo("0.00");
     }
 
     @Test
-    public void shouldReturnProductPagesInResultsArrayIfProductPagesAdded() {
+    public void shouldReturnProductPagesInResultsArrayIfProductPagesAdded() throws JSONException {
         productPages.add(createProductPage());
         productPages.add(createProductPage());
 
@@ -46,7 +47,7 @@ public class ProductPagesJsonFormatterTest {
     }
 
     @Test
-    public void shouldReturnTotalOfProductPageUnitPricesProductPagesAdded() {
+    public void shouldReturnTotalOfProductPageUnitPricesProductPagesAdded() throws JSONException {
         productPages.add(createProductPage());
         productPages.add(createProductPage());
 
