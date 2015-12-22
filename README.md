@@ -33,7 +33,7 @@ based around connecting to a web page that exists on the web and is not under my
 be noted that the integration test will fail if any of the pages referenced are modified. The integration test
 processes a statically loaded listing page found at the following url:
 
-static: http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html
+http://hiring-tests.s3-website-eu-west-1.amazonaws.com/2015_Developer_Scrape/5_products.html
 
 The application has only been tested on mac and windows and a linux mint distro and has worked without issues. If you
 encounter issues running the code, please feel free to let me know.
