@@ -42,7 +42,6 @@ dependencies {
     testCompile 'info.cukes:cucumber-junit:1.2.4'
 
     compile 'org.jsoup:jsoup:1.8.3'
-    compile 'org.seleniumhq.selenium:selenium-java:2.48.2'
     compile 'org.json:json:5.0.5'
 }
 
