@@ -24,8 +24,9 @@ following commands:
 
 ```
 gradlew clean build                     //runs all unit tests
-gradlew clean build cucumber            //runs all unit tests followed by integration test
+gradlew clean build cucumber            //runs all unit tests followed by integration tests
 gradlew clean build run                 //runs the application
+gradlew clean build cucumber run        //runs all unit and integration tests followed by the application
 ```
 
 The integration test are required because it was not possible to create reliably running unit tests

@@ -16,38 +16,14 @@ public class ProductPageParserTest {
     private HtmlLoader htmlLoader = new HtmlLoader();
 
     @Test
-    public void shouldParseTitleFromProductPage() {
+    public void shouldParseDataFromProductPage() {
         String html = loadProductPageHtml();
 
         ProductPageParser parser = new ProductPageParser(html);
 
         assertThat(parser.getTitle()).isEqualTo(TITLE);
-    }
-
-    @Test
-    public void shouldParseDescriptionFromProductPage() {
-        String html = loadProductPageHtml();
-
-        ProductPageParser parser = new ProductPageParser(html);
-
         assertThat(parser.getDescription()).isEqualTo(DESCRIPTION);
-    }
-
-    @Test
-    public void shouldParseUnitPriceFromProductPage() {
-        String html = loadProductPageHtml();
-
-        ProductPageParser parser = new ProductPageParser(html);
-
         assertThat(parser.getPricePerUnit()).isEqualTo(UNIT_PRICE);
-    }
-
-    @Test
-    public void shouldParsePageSizeFromProductPage() {
-        String html = loadProductPageHtml();
-
-        ProductPageParser parser = new ProductPageParser(html);
-
         assertThat(parser.getPageSize()).isEqualTo(PAGE_SIZE);
     }
 
