@@ -10,7 +10,7 @@ import static uk.co.mruoc.model.ProductPage.ProductPageBuilder;
 public class ProductPageFormatterTest {
 
     private static final String TITLE = "TITLE";
-    private static final double SIZE = 12.333;
+    private static final double SIZE = 12333;
     private static final double UNIT_PRICE = 4.444;
     private static final String DESCRIPTION = "DESCRIPTION";
 
