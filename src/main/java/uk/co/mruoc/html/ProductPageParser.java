@@ -12,7 +12,6 @@ public class ProductPageParser {
     private static final String TITLE_SELECTOR = ".productTitleDescriptionContainer h1";
     private static final String PRICE_SELECTOR = "p.pricePerUnit";
     private static final String DESCRIPTION_SELECTOR = "div.productText";
-    private static final double BYTES_IN_KILOBYTE = 1024;
 
     private final String html;
     private final Document document;
@@ -34,7 +33,7 @@ public class ProductPageParser {
 
     public double getPageSize() {
         byte[] bytes = html.getBytes(Charset.defaultCharset());
-        return bytes.length / BYTES_IN_KILOBYTE;
+        return bytes.length;
     }
 
     public String getDescription() {

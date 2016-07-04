@@ -1,29 +1,34 @@
 package uk.co.mruoc.format;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+import uk.co.mruoc.ScraperException;
 import uk.co.mruoc.model.ProductPage;
 
 import java.text.DecimalFormat;
 
 public class ProductPageJsonFormatter {
 
-    private static final double BYTES_IN_KILOBYTE = 1024;
-
     private UnitPriceFormatter unitPriceFormatter = new UnitPriceFormatter();
+    private SizeConverter sizeConverter = new SizeConverter();
+    private SizeFormatter sizeFormatter = new SizeFormatter();
 
     public JSONObject toJson(ProductPage source) {
-        JSONObject target = new JSONObject();
-        target.put("title", source.getTitle());
-        target.put("size", formatSize(source));
-        target.put("unit_price", formatUnitPrice(source));
-        target.put("description", source.getDescription());
-        return target;
+        try {
+            JSONObject target = new JSONObject();
+            target.put("title", source.getTitle());
+            target.put("size", formatSize(source));
+            target.put("unit_price", formatUnitPrice(source));
+            target.put("description", source.getDescription());
+            return target;
+        } catch (JSONException e) {
+            throw new ScraperException(e);
+        }
     }
 
     private String formatSize(ProductPage productPage) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        double size = productPage.getSize() / BYTES_IN_KILOBYTE;
-        return decimalFormat.format(size) + "kb";
+        double size = sizeConverter.bytesToKiloBytes(productPage.getSize());
+        return sizeFormatter.format(size);
     }
 
     private String formatUnitPrice(ProductPage productPage) {
