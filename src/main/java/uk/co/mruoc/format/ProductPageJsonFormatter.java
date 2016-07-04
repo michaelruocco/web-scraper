@@ -5,8 +5,6 @@ import org.json.JSONObject;
 import uk.co.mruoc.ScraperException;
 import uk.co.mruoc.model.ProductPage;
 
-import java.text.DecimalFormat;
-
 public class ProductPageJsonFormatter {
 
     private UnitPriceFormatter unitPriceFormatter = new UnitPriceFormatter();

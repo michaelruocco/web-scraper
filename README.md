@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/michaelruocco/web-scraper.svg?branch=master)](https://travis-ci.org/michaelruocco/web-scraper)
 [![Coverage Status](https://coveralls.io/repos/michaelruocco/web-scraper/badge.svg?branch=master&service=github)](https://coveralls.io/github/michaelruocco/web-scraper?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/5678902d107997003e0011d8/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5678902d107997003e0011d8)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7ceaa89e2c1f4390bf156cf8486859f5)](https://www.codacy.com/app/michael-ruocco/web-scraper?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=michaelruocco/web-scraper&amp;utm_campaign=Badge_Grade)
 
 This project is an attempt to solve a programming problem that requires data to be
 scraped from the following web page:

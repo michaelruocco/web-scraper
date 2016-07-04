@@ -14,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class StepDefs {
 
     private Scraper scraper;
-    private String result;
     private JSONObject json;
     private JSONArray results;
 
@@ -25,7 +24,7 @@ public class StepDefs {
 
     @When("^the page is parsed$")
     public void the_page_is_parsed() throws Throwable {
-        result = scraper.scrape();
+        String result = scraper.scrape();
         json = new JSONObject(result);
         results = json.getJSONArray("results");
     }
