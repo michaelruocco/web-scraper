@@ -58,7 +58,13 @@ set _SKIP=2
 
 :win9xME_args_slurp
 if "x%~1" == "x" goto execute
-
+//is this a comment
+//of course it is
+//lunch
+//have lunch
+//then lets work
+//do you accept?
+//aye aye?
 set CMD_LINE_ARGS=%*
 goto execute
 
